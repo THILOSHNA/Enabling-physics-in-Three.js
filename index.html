@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Playground</title>
+    <style>
+           body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: #fff;
+            overflow: hidden;
+        }
+        #controlPanel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            width: 300px;
+        }
+        .panel input[type="range"] {
+            -webkit-appearance: none;
+            width: 50%;
+            height: 2px;
+            background: #555;
+            outline: none;
+            border-radius: 5px;
+        }
+        .panel input{
+            width: 70%;
+            padding: 3px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background: #444;
+            color: #fff;
+        }
+        .panel input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #888;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .panel div{
+            margin: 10px;
+        }
+        .size-content{
+            display: flex;
+        }
+        button{
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            background: #ffffff;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        select {
+            width: 70%;
+            padding: 3px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <div id="controlPanel">
+        <h3>Controls</h3>
+        <div id="shapeInfo">No shape selected</div>
+        <button id="enablePhysics" disabled>Enable Physics</button>
+        <button id="setCollider">Set Collider</button>
+        <button id="toggleDebug">Debug</button>
+        <select id="colliderType">
+            <option value="sphere">Sphere</option>
+            <option value="cube">Cube</option>
+            <option value="cylinder">Cylinder</option>
+        </select>
+        <div class="panel">
+            <h4>Physics Properties</h4>
+            <div>
+                <label for="bounce">Bounce: </label>
+                <input type="range" id="bounce" min="0" max="1" step="0.1" value="0.5">
+                <span id="bounceValue">0.5</span>
+            </div>
+            <div>
+                <label for="friction">Friction: </label>
+                <input type="range" id="friction" min="0" max="1" step="0.1" value="0.5">
+                <span id="frictionValue">0.5</span>
+            </div>
+            <div>
+                <label for="gravity">Gravity: </label>
+                <input type="range" id="gravity" min="-20" max="0" step="0.1" value="-9.81">
+                <span id="gravityValue">-9.81</span>
+            </div>
+            <div>
+                <label for="damping">Damping: </label>
+                <input type="range" id="damping" min="0" max="1" step="0.1" value="0">
+                <span id="dampingValue">0</span>
+            </div>
+            <div>
+              <label for="horizontalForce">Horizontal Force: </label>
+              <input type="range" id="horizontalForce" min="-10" max="10" step="0.1" value="0">
+              <span id="horizontalForceValue">0</span>
+            </div>
+        </div>
+        <button id="applyForce" disabled>Apply Force</button>
+    </div>
+
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.164.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.0/examples/jsm/"
+          }
+        }
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html> 
